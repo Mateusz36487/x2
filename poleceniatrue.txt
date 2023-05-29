@@ -1,0 +1,30 @@
+1 nwm
+2CREATE TABLE siatkarz(Id INT,imie VARCHAR(45),nazwisko VARCHAR(45),narodowosc VARCHAR(45), wzrost INT, waga INT, numer INT, dataUrodzenia DATE);
+3CREATE TABLE klub(Id INT,nazwa VARCHAR(45),ulica VARCHAR(45),nrDomu VARCHAR(10), miejscowosc VARCHAR(45), kodpocztowy VARCHAR(45)); 
+4CREATE TABLE mecz (id INT, data DATE, gospodarzId INT,goscieID INT,wynik VARCHAR(3))
+5CREATE TABLE statystyki (id INT, idMecz INT,idZawodnik INT,punkty INT, asy INT, bloki INT, zagrywki INT,przyjecie FLOAT, ocena FLOAT);
+6INSERT INTO siatkarz VALUES(1,'Tomasz', 'Formal','Polak', 200,92,21, 31.08.1997);
+7INSERT INTO siatkarz VALUES(2,'Rafał', 'Szymura','Polak', 197,102,26, '1995.08.29');
+8INSERT INTO siatkarz VALUES(3,'Nicolas', 'Szerszeń','Polak', 195,91,9, '1996.12.31');  
+9INSERT INTO siatkarz VALUES(4,'Łukasz', 'Kaczmarek','Polak', 204,102,2, '1994.06.26'); 
+10 SELECT * FROM siatkarz;
+11 INSERT INTO klub VALUES(1,'Jastrzębski Węgiel','Jana Pawła II',6,'Jastrzębie Zdrój','44-335'); 
+12 INSERT INTO klub VALUES(2,'Grupa Azoty ZAKSA Kędzierzyn-Koźle','Mostowa','1a','Kędzierzyn-Koźle','47-224'); 
+13 INSERT INTO klub VALUES(3,'Asseco Resovia Rzeszów','Podpromie','10','Rzeszów','35-030'); 
+14 SELECT * FROM `klub`; 
+15 INSERT INTO mecz VALUES(1,'2020.09.20','1','3','3:2'); 
+16 INSERT INTO mecz VALUES(2,'2020.11.5','2','1','3:1');
+17 SELECT * FROM `mecz`; 
+18 INSERT INTO statystyki VALUES(1,1,1,10,2,1,14,0.67,6.7);
+19 INSERT INTO statystyki VALUES(1,1,2,8,0,2,15,0.53,6.1); 
+20 INSERT INTO statystyki VALUES(1,2,1,15,3,1,17,0.68,6.8); 
+21 SELECT * FROM statystyki; 
+22 SELECT * FROM `statystyki` WHERE idZawodnik = 1; 
+23 SELECT * FROM `mecz` WHERE gospodarzId AND goscieID =1; 
+25 SELECT SUM(punkty) FROM statystyki WHERE idZawodnik = 1; 
+26 ALTER TABLE statystyki ADD bledy INT; 
+28 SELECT AVG(bloki) FROM `statystyki`; 
+29 SELECT MAX(punkty) FROM statystyki WHERE id = 1 AND id= 2; 
+30 SELECT imie,nazwisko,dataUrodzenia FROM siatkarz ORDER BY dataUrodzenia ASC; 
+31 SELECT imie,nazwisko,ocena FROM siatkarz,statystyki ORDER BY `statystyki`.`ocena` ASC; 
+33 ALTER TABLE mecz ADD frejwencja INT AFTER data; 
